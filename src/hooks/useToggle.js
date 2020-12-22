@@ -1,21 +1,21 @@
 import { useState } from 'react';
 
+// useToggle is a custom hook to toggle an piece of state to true/false (i.e. show a menu, check a box etc.)
+// It takes an initial value as a piece of state, and has a built-in toggle function to set said state to true/false.
+// It reduces the need for helper functions commonly used through tons of different components.
+// See the example below for how it can be used.
+
 const useToggle = (initVal = false) => {
-  // call useState, reserve a piece of state..
   const [state, setState] = useState(initVal);
 
   const toggle = () => {
     setState(!state);
   };
-  // return a piece of state AND a function to toggle it.
+
   return [state, toggle];
 };
 
 export default useToggle;
-
-// useToggle is a custom hook to toggle true/false (i.e. show a menu, check a box etc.)
-// It uses a piece of state, and a built-in toggle function to set said state to true/false.
-// See the example below for how it can be used.
 
 /*
 import React, { useState } from 'react';
@@ -26,9 +26,7 @@ const Toggler = () => {
   const [isHappy, toggleIsHappy] = useToggle(true);
   const [isCold, toggleIsCold] = useToggle(true);
 
-  const toggle = () => {
-    setIsHappy(!isHappy);
-  };
+ 
 
   return (
     <>
